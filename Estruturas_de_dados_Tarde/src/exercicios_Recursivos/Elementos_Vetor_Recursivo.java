@@ -1,7 +1,7 @@
 package exercicios_Recursivos;
 
 /**
- * Classe com metodos de busca em veotres de modo recursivo
+ * Classe com metodos de busca em vetores de modo recursivo
  *
  */
 public class Elementos_Vetor_Recursivo {
