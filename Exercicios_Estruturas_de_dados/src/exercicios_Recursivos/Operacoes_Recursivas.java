@@ -29,7 +29,7 @@ public class Operacoes_Recursivas {
 		if (indice == vetor.length) {
 			System.out.println("Soma dos elementos = " + total);
 			return total;
-		} else {			
+		} else {
 			total += vetor[indice];
 			return somatorio(vetor, total, indice + 1);
 		}
@@ -59,7 +59,7 @@ public class Operacoes_Recursivas {
 		if (indice == vetor.length) {
 			System.out.println("Produto dos elementos = " + total);
 			return total;
-		} else {			
+		} else {
 			total *= vetor[indice];
 			return produtorio(vetor, total, indice + 1);
 		}
@@ -73,7 +73,7 @@ public class Operacoes_Recursivas {
 	 * @return Retorna a média aritimética do vetor passado
 	 */
 	public static float media(int[] vetor) {
-		float media = somatorio(vetor)/(float)vetor.length;
+		float media = somatorio(vetor) / (float) vetor.length;
 		System.out.println("Media dos elementos = " + media);
 		return media;
 
@@ -304,5 +304,78 @@ public class Operacoes_Recursivas {
 
 			return menor_elemento(vetor, menor, indice + 1);
 		}
+	}
+
+	/**
+	 * Realiza todas as permutações possiveis de uma palavra
+	 * 
+	 * @param palavra          Palavra que será permutada em forma de vetor de
+	 *                         characteres
+	 * @param indice_principal Índice de busca do vetor, usado para percorrer o
+	 *                         vetor
+	 * @param indice_auxiliar  Índice de busca do vetor, usado para percorrer o
+	 *                         vetor
+	 */
+	private static void permutacoes_string(char[] palavra, int indice_principal, int indice_auxiliar) {
+		char letrafixa, letratroca;
+		char[] palavra_auxiliar = palavra.clone();
+
+		if (indice_principal == palavra.length) {
+			System.out.println("Fim");
+		} else {
+			if (indice_auxiliar == palavra.length) {
+				permutacoes_string(palavra, indice_principal + 1, 0);
+			} else {
+				letrafixa = palavra[indice_principal];
+				letratroca = palavra[indice_auxiliar];
+				palavra_auxiliar[indice_auxiliar] = letrafixa;
+				palavra_auxiliar[indice_principal] = letratroca;
+				System.out.println(palavra_auxiliar);
+				permutacoes_string(palavra, indice_principal, indice_auxiliar + 1);
+			}
+		}
+	}
+
+	/**
+	 * Chama o método {@link #permutacoes_string(char[], int, int)} para realizar
+	 * todas as permutações possiveis de uma palavra
+	 * 
+	 * @param palavra Palavra a ser permutada
+	 */
+	public static void permutacoes_string(String palavra) {
+		char[] palavra_chars = palavra.toCharArray();
+		permutacoes_string(palavra_chars, 0, 0);
+	}
+
+	/**
+	 * Chama o método {@link #teste_Palindromo(String, int)} para verificar se a
+	 * String passada é um palindromo
+	 * 
+	 * @param palavra String a ser verificada
+	 * @return Retorna verdadeiro caso a String for um palindromo, falso caso não
+	 */
+	public static boolean teste_Palindromo(String palavra) {
+		String palavra_minuscula = palavra.toLowerCase();
+		return teste_Palindromo(palavra_minuscula, 0);
+	}
+
+	/**
+	 * Verifica se a String passada é um palindromo de forma recursiva
+	 * 
+	 * @param palavra String a ser verificada
+	 * @param indice  Índice de busca do vetor, usado para percorrer o vetor
+	 * @return Retorna verdadeiro caso a String for um palindromo, falso caso não
+	 */
+	private static boolean teste_Palindromo(String palavra, int indice) {
+		if (indice > (palavra.length() / 2) - 1) {
+			return true;
+		} else {
+			if (palavra.charAt(indice) != palavra.charAt(palavra.length() - indice - 1)) {
+				return false;
+			} else {
+				return teste_Palindromo(palavra, indice + 1);
+			}
+		}
+
 	}
 }

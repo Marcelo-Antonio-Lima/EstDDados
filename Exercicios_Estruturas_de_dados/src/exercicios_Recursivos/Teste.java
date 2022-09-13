@@ -63,5 +63,8 @@ public class Teste {
 		}
 		System.out.println("");
 		*/
+		//System.out.println(Jogos_recursivos.teste_Palindromo("Ovo"));
+		//Jogos_recursivos.hanoi(4);
+		//Jogos_recursivos.permutacoes_string("Roupa");
 	}
 }
