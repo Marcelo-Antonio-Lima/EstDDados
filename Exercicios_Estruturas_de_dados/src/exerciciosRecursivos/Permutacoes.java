@@ -27,15 +27,10 @@ public class Permutacoes {
 					permutacoesString(palavra, contadorPrincipal + 1, 0, contadorPermutacoes, listaPermutacoes);
 				} else {
 					palavraTrabalho = letraTroca(palavraTrabalho, contadorPrincipal, contadorAuxiliar);
-					if (listaPermutacoes.contains(String.valueOf(palavraTrabalho))) {
-						permutacoesString(palavra, contadorPrincipal, contadorAuxiliar + 1, contadorPermutacoes,
-								listaPermutacoes);
-
-					} else {
-						listaPermutacoes.add(String.valueOf(palavraTrabalho));
-						permutacoesString(palavra, contadorPrincipal, contadorAuxiliar + 1, contadorPermutacoes,
-								listaPermutacoes);
-					}
+					
+					listaPermutacoes = verificarPalavra(listaPermutacoes, palavraTrabalho);
+					permutacoesString(palavra, contadorPrincipal, contadorAuxiliar + 1, contadorPermutacoes,
+							listaPermutacoes);
 
 				}
 			}
@@ -81,33 +76,15 @@ public class Permutacoes {
 		return retorno;
 
 	}
+	
+	private static List<String> verificarPalavra(List<String> lista,char[] palavra) {
+		if (lista.contains(String.valueOf(palavra))) {
+			return lista;
 
-	public static void permutacoes2(String palavra) {
-		char[] palavraChars = palavra.toCharArray();
-		permutacoes2(palavraChars, "");
-	}
-
-	private static void permutacoes2(char[] palavra, String letraAnterior) {
-		String palavraAnterior =letraAnterior + String.valueOf(palavra);
-		String palavraEnvio =letraAnterior + palavra[0];
-		System.out.println(palavraAnterior);
-		
-		if (palavra.length > 2) {
-			permutacoes2(removerPrimeiroChar(palavra),palavraEnvio );
-			palavra = moverChar(palavra);
-			permutacoes2(removerPrimeiroChar(palavra), palavraEnvio);
+		} else {
+			lista.add(String.valueOf(palavra));
+			return lista;
 		}
-		
-		
-
-	}
-
-	private static char[] removerPrimeiroChar(char[] palavra) {
-		char[] retorno = new char[palavra.length - 1];
-		for (int i = 1; i < palavra.length; i++) {
-			retorno[i - 1] = palavra[i];
-		}
-		return retorno;
 	}
 
 }
