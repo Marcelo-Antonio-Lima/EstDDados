@@ -27,7 +27,6 @@ public class Permutacoes {
 					permutacoesString(palavra, contadorPrincipal + 1, 0, contadorPermutacoes, listaPermutacoes);
 				} else {
 					palavraTrabalho = letraTroca(palavraTrabalho, contadorPrincipal, contadorAuxiliar);
-					System.out.println(String.valueOf(palavraTrabalho));
 					if (listaPermutacoes.contains(String.valueOf(palavraTrabalho))) {
 						permutacoesString(palavra, contadorPrincipal, contadorAuxiliar + 1, contadorPermutacoes,
 								listaPermutacoes);
